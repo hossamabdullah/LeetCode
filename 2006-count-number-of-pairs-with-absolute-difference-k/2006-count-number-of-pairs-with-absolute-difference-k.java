@@ -8,12 +8,7 @@ class Solution {
         
         int count = 0;
         for(int i=0; i<data.length-k; i++){
-            if(data[i] == 0 || data[i+k]==0)
-                continue;
-            int c1 = data[i];
-            int c2 = data[i+k];
-            
-            count += c1*c2;
+            count += data[i]*data[i+k];
         }
         return count;
     }

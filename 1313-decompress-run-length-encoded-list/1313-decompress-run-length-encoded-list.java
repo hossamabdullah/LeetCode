@@ -1,8 +1,7 @@
 class Solution {
     public int[] decompressRLElist(int[] nums) {
         List<Integer> res = new ArrayList<>();
-        for(int i=0; i<nums.length; i++){
-            if(2*i >= nums.length) break;
+        for(int i=0; 2*i < nums.length; i++){
             int freq = nums[2*i];
             int val  = nums[2*i+1];
             

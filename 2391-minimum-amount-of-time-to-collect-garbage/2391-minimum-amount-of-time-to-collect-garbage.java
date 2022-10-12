@@ -22,8 +22,6 @@ class Solution {
             if(currentGarbage.contains("P") && !p) { c+=accumlatedTravel[i-1]; p=true;}
             if(currentGarbage.contains("M") && !m) { c+=accumlatedTravel[i-1]; m=true;}
             if(currentGarbage.contains("G") && !g) { c+=accumlatedTravel[i-1]; g=true;}
-            // if(p!=0 && m!=0 && g!=0)
-                // break;
         }
         
         return c;

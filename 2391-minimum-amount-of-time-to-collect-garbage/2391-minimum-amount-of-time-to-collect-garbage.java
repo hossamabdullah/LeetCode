@@ -17,6 +17,8 @@ class Solution {
             c += currentGarbage.length();
             if(i==0)
                 break;
+            if(p && m && g)
+                continue;
             if(currentGarbage.contains("P") && !p) { c+=accumlatedTravel[i-1]; p=true;}
             if(currentGarbage.contains("M") && !m) { c+=accumlatedTravel[i-1]; m=true;}
             if(currentGarbage.contains("G") && !g) { c+=accumlatedTravel[i-1]; g=true;}

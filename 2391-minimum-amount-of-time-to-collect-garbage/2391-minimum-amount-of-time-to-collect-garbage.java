@@ -1,10 +1,15 @@
 class Solution {
     public int garbageCollection(String[] garbage, int[] travel) {
-        int papgerGarbageCost = findGarbageCollectionForOneType(garbage, travel, 'P');
+        int[] accumlatedTravels = new int[travel.length];
+        accumlatedTravels[0] = travel[0];
+        for(int i=1; i<travel.length; i++){
+            accumlatedTravels[i] = travel[i] + accumlatedTravels[i-1];
+        }
+        int papgerGarbageCost = findGarbageCollectionForOneType(garbage, accumlatedTravels, 'P');
         // System.out.println("papgerGarbageCost: "+papgerGarbageCost);
-        int glassGarbageCost = findGarbageCollectionForOneType(garbage, travel, 'G');
+        int glassGarbageCost = findGarbageCollectionForOneType(garbage, accumlatedTravels, 'G');
         // System.out.println("glassGarbageCost: "+glassGarbageCost);
-        int metalGarbageCost = findGarbageCollectionForOneType(garbage, travel, 'M');
+        int metalGarbageCost = findGarbageCollectionForOneType(garbage, accumlatedTravels, 'M');
         // System.out.println("metalGarbageCost: "+metalGarbageCost);
         
         int sum = papgerGarbageCost 
@@ -14,30 +19,25 @@ class Solution {
         return sum;
     }
     
-    public int findGarbageCollectionForOneType(String[] garbage, int[] travel, char garbageType)    {
-        int collectingMinutes = 0;
-        int travelMinutes = 0;
-        int pendingTravelMinutes = 0;
+     public int findGarbageCollectionForOneType(String[] garbage, int[] accumlatedTravels, char type){
+        int movementTime = 0;
+         StringBuilder allGarbage = new StringBuilder();
         for(int i=0; i<garbage.length; i++){
-            int numOfGarbageType = countOfCharOccurencesInString(garbage[i], garbageType);
-            if(numOfGarbageType != 0){
-                if(i > 0){
-                    travelMinutes += pendingTravelMinutes;
-                    travelMinutes += travel[i-1];
-                    pendingTravelMinutes = 0;
-                }
-                collectingMinutes+=numOfGarbageType;
-            }else{
-                if(i > 0)
-                    pendingTravelMinutes+=travel[i-1];
-            }
-            
+            allGarbage.append(garbage[i]);
         }
-        // System.out.println("collectingMinutes: "+collectingMinutes);
-        // System.out.println("travelMinutes: "+travelMinutes);
-        return collectingMinutes+travelMinutes;
+         
+         int garbageCollectionTime = countOfCharOccurencesInString(allGarbage.toString(), type);
+         
+        for(int i=garbage.length-1; i>0; i--){
+            int numOfGarbageType = countOfCharOccurencesInString(garbage[i], type);
+            if(numOfGarbageType > 0){
+                if(movementTime == 0)
+                    movementTime = accumlatedTravels[i-1];
+            }
+        }
+         
+         return garbageCollectionTime + movementTime;
     }
-    
     public int countOfCharOccurencesInString(String field, char key){
         int count = 0;
         for (int i = 0; i < field.length(); i++) {

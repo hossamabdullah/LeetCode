@@ -11,7 +11,7 @@ class Solution {
                 }
             }
             
-            System.out.println("maxIndex = "+maxIndex+", with value = "+heights[maxIndex]);
+            // System.out.println("maxIndex = "+maxIndex+", with value = "+heights[maxIndex]);
             heights[maxIndex] = 0;
             sorted[i] = names[maxIndex];
         }

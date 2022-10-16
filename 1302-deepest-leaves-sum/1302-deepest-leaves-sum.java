@@ -25,7 +25,7 @@ class Solution {
             return new int[]{0,0};
         
         if(node.left == null && node.right == null){
-            System.out.println(node.val+"--"+depth);
+            // System.out.println(node.val+"--"+depth);
             return new int[]{node.val, depth};
         }
         

@@ -9,12 +9,9 @@ class Solution {
             sorted[index] = words[i].substring(0, lastIndexOfCurrentWord);  
         }
         
-        StringBuilder result = new StringBuilder();
-        for(int i=0; i<sorted.length; i++){
-            result.append(sorted[i]+" ");
-        }
+        String result = String.join(" ", sorted);
         
-        return result.toString().trim();
+        return result;
         
     }
 }

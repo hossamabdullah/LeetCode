@@ -1,13 +1,19 @@
 class Solution {
     public int[] smallerNumbersThanCurrent(int[] nums) {
-        List<Integer> sortedList = Arrays.stream(nums)
-                                            .boxed()
-                                            .collect(Collectors.toList());
-        Collections.sort(sortedList);
+        int[] count = new int[101];
         for(int i=0; i<nums.length; i++){
-            int indexInSortedArray = sortedList.indexOf(nums[i]);
-            nums[i] = indexInSortedArray;
+            count[nums[i]]++;
         }
+        
+        for(int i=1; i<count.length; i++){
+            count[i] += count[i-1];
+        }
+        
+        for(int i=0; i<nums.length; i++){
+            if(nums[i] == 0)    nums[i] = 0;
+            else                nums[i] = count[nums[i]-1]; 
+        }
+        
         return nums;
     }
 }

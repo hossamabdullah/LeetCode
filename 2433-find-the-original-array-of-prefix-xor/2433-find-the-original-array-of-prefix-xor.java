@@ -6,7 +6,6 @@ class Solution {
         for(int i=1; i<pref.length; i++){
             res[i] = acc ^ pref[i];
             acc = acc ^ res[i];
-            // System.out.println(acc +" ^ "+pref[i] + " = "+res[i]);
         }
         return res;
     }

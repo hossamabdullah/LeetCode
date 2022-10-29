@@ -11,15 +11,15 @@ class Solution {
         for(int i=0; i<items.size(); i++){
             if(ruleKey.equals(TYPE_RULE) 
                      && items.get(i).get(TYPE_INDEX).equals(ruleValue)){
-                System.out.println(i+"--- type");
+                // System.out.println(i+"--- type");
                 count++;
             }else if(ruleKey.equals(COLOR_RULE) 
                      && items.get(i).get(COLOR_INDEX).equals(ruleValue)){
-                System.out.println(i+"--- color");
+                // System.out.println(i+"--- color");
                 count++;
             }else if(ruleKey.equals(NAME_RULE)
                      && items.get(i).get(NAME_INDEX).equals(ruleValue)){
-                System.out.println(i+"--- name");
+                // System.out.println(i+"--- name");
                 count++;
             }
         }

@@ -1,23 +1,23 @@
 class MyHashMap {
-    Map<Integer, Integer> data;
+    int[] data;
     
     public MyHashMap() {
-        data = new HashMap<>();
+        data = new int[1000001];
+        for(int i=0; i<data.length; i++){
+            data[i] = -1;
+        }
     }
     
     public void put(int key, int value) {
-        data.put(key, value);   
+        data[key] = value;
     }
     
     public int get(int key) {
-        if(data.containsKey(key))
-            return data.get(key);
-        else
-            return -1;
+        return data[key];
     }
     
     public void remove(int key) {
-        data.remove(key);
+        data[key] = -1;
     }
 }
 

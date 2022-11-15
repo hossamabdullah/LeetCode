@@ -13,23 +13,16 @@ class Solution {
             k++;
         }
         
-        for(int a=0; a<m+n; a++){
-            System.out.print(res[a]);
-        }
-        System.out.println();
-        System.out.println(i+"-"+m+","+j+"-"+n+","+k);
         while(i<m){
             res[k] = nums1[i];
             k++;
             i++;
         }
-        System.out.println(i+"-"+m+","+j+"-"+n+","+k);
         while(j<n){
             res[k] = nums2[j];
             k++;
             j++;
         }
-        System.out.println(i+"-"+m+","+j+"-"+n+","+k);
         
         for(int a=0; a<m+n; a++){
             nums1[a] = res[a];
